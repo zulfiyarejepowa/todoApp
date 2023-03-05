@@ -1,0 +1,176 @@
+body {
+    background-color: rgb(122, 122, 216);
+}
+.App {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 5%;
+    text-align: center;
+    background-color: aliceblue;
+    border: 1px solid black ;
+    width: 35%;
+    border-radius: 10px;
+}
+.App > h1 {
+    margin: 10px;
+}
+.todo-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.tasks {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 600px;
+    overflow: auto;
+    padding: 20px 0px;
+}
+.task {
+    display: flex;
+    flex-direction: row;
+    /* gap: 100px; */
+    justify-content: flex-start;
+    text-align: center;
+    align-items: center;
+}
+ol {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    margin: auto;
+}
+.listItem {
+    display: flex;
+    flex-direction: row;
+    padding: 0 15px;
+    gap: 100px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.searchBtn, .red-btn, .deleteAllBtn {
+    --color: rgb(76, 218, 76);
+    padding: 0.5em 1.5em;
+    background-color: transparent;
+    border-radius: .3em;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .5s;
+    font-weight: 400;
+    font-size: 17px;
+    border: 2px solid;
+    font-family: inherit;
+    text-transform: uppercase;
+    color: var(--color);
+    z-index: 1;
+   }
+   
+   .searchBtn::before, .searchBtn::after,
+   .red-btn::before, .red-btn::after,
+   .deleteAllBtn::before, .deleteAllBtn::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: var(--color);
+    transition: 1s ease;
+   }
+   
+   .searchBtn::before, .red-btn::before, .deleteAllBtn::before {
+    top: -1em;
+    left: -1em;
+   }
+   
+   .searchBtn::after, .red-btn::after, .deleteAllBtn::after {
+    left: calc(100% + 1em);
+    top: calc(100% + 1em);
+   }
+   
+   .searchBtn:hover::before, .searchBtn:hover::after,
+   .red-btn:hover::before, .red-btn:hover::after, 
+   .deleteAllBtn:hover::before, .deleteAllBtn:hover::after {
+    height: 410px;
+    width: 410px;
+   }
+   
+   .searchBtn:hover, .red-btn:hover, .deleteAllBtn:hover {
+    color: rgb(10, 25, 30);
+   }
+   
+   .searchBtn:active, .red-btn:active, .deleteAllBtn:active {
+    filter: brightness(.8);
+   }
+   .deleteAllBtn {
+    border: 2px solid rgb(236, 60, 60);
+    color: rgb(236, 60, 60);
+   }
+   .deleteAllBtn::before, .deleteAllBtn::after {
+    background-color: rgb(236, 60, 60);
+   }
+
+input {
+    border: 2px solid rgb(30, 16, 110);
+    border-radius: .3em;
+    background-color: aliceblue;
+    padding: 0.8em 1em;    
+  }
+   .deleteBtn {
+    display: inline;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 1em;
+    margin: 0 0.5rem ;
+    border: 0px solid transparent;
+    background-color: rgba(100,77,237,0.08);
+    border-radius: 1.25em;
+    transition: all 0.2s linear;
+    position: relative;
+   }
+   
+   .deleteBtn:hover {
+    box-shadow: 3.4px 2.5px 4.9px rgba(0, 0, 0, 0.025),
+     8.6px 6.3px 12.4px rgba(0, 0, 0, 0.035),
+     17.5px 12.8px 25.3px rgba(0, 0, 0, 0.045),
+     36.1px 26.3px 52.2px rgba(0, 0, 0, 0.055),
+     99px 72px 143px rgba(0, 0, 0, 0.08);
+   }
+   
+   .deleteBtn .tooltiptext {
+    visibility: hidden;
+    width: 4em;
+    background-color: rgba(0, 0, 0, 0.253);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 25%;
+    left: 110%;
+   }
+   
+   .deleteBtn .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent rgba(0, 0, 0, 0.253) transparent transparent;
+   }
+   
+   .deleteBtn:hover .tooltiptext {
+    visibility: visible;
+   }
