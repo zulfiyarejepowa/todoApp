@@ -10,7 +10,7 @@ function App() {
   const [SearchTasks, setSearchTasks] = useState([]);
   const [inputMod, setInputMod] = useState('tasks');
   // const [FavTasks, setFavTasks] = useState([]);
-  const [checked, setChecked] = useState(false);
+  // const [checked, setChecked] = useState(false);
   const inputRef = useRef();
 
 
@@ -22,9 +22,6 @@ function App() {
     } else {
       localStorage.setItem('tasks', JSON.stringify([]));
     }
-  }, []);
-
-  useEffect(() => {
     inputRef.current.focus();
   }, []);
 
@@ -40,11 +37,13 @@ function App() {
     if (inputText !== '') {
       const newTask = {
         id: nanoid(),
-        text: inputText,
+        text: inputText
       };
       setTasks([...tasks, newTask]);
       localStorage.setItem('tasks', JSON.stringify([...tasks, newTask]));
       setInput('');
+    } else {
+      alert('Write Task!');
     }
   }
 
@@ -87,9 +86,12 @@ function App() {
 
   return (
     <div className="App">
-      <h1>TODO App</h1>
+      <h1>TODO List</h1>
       <div className="todo-actions">
         <button onClick={toggleSearch} className="searchBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+          </svg>
           Search
         </button>
 
@@ -99,10 +101,14 @@ function App() {
           onChange={handleInput}
           onKeyUp={handleChangeEnter}
           ref={inputRef}
+          placeholder="todo action"
         />
         {inputMod === 'tasks' && (
           <>
             <Button color="red" onClick={btnClick}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+              </svg>
               <span>Add</span>
             </Button>
 
@@ -119,9 +125,10 @@ function App() {
           <ol>
             {currentTasks.map((task) => (
               <li className="listItem" key={task.id}>
-                <input type="checkbox" id="todo" checked={checked} onChange={() => setChecked(!checked)} />
-                <label htmlFor="todo">
-                {task.text}</label>
+                {/* <input type="checkbox" id="todo" checked={checked} onChange={() => setChecked(!checked)} />
+                <label htmlFor="todo"> */}
+                  {task.text}
+                  {/* </label> */}
                 <button
                   onClick={() => handleDelete(task.id)}
                   className="deleteBtn"

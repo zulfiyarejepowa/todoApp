@@ -1,6 +1,13 @@
-body {
-    background-color: rgb(122, 122, 216);
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+body {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(203, 194, 242, 1) 53%, rgba(157, 139, 230, 1) 100%);
+    height: 100vh;
+}
+
 .App {
     display: flex;
     flex-direction: column;
@@ -8,54 +15,68 @@ body {
     margin-top: 5%;
     text-align: center;
     background-color: aliceblue;
-    border: 1px solid black ;
-    width: 35%;
+    border: 1px solid black;
+    width: 40%;
     border-radius: 10px;
 }
-.App > h1 {
+
+.App>h1 {
     margin: 10px;
+    font-size: clamp(1rem, 4vw, 2rem);
 }
+
 .todo-actions {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
+
 .tasks {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: center; */
+    align-items: center;
     max-height: 600px;
     overflow: auto;
-    padding: 20px 0px;
+    padding: 3%;
 }
+
 .task {
     display: flex;
     flex-direction: row;
-    /* gap: 100px; */
     justify-content: flex-start;
     text-align: center;
     align-items: center;
 }
+
 ol {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    /* margin: auto; */
     justify-content: center;
-    margin: auto;
+    padding: 0;
 }
+
 .listItem {
     display: flex;
     flex-direction: row;
-    padding: 0 15px;
-    gap: 100px;
-    align-items: flex-start;
+    padding: 0;
+    gap: 150px;
+    align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid #252525;
+    /* font-size: clamp(0.4rem, 4vw, 1rem); */
+    font-size: calc(0.4rem + 1vw);
 }
-.searchBtn, .red-btn, .deleteAllBtn {
+
+.searchBtn,
+.red-btn,
+.deleteAllBtn {
     --color: rgb(76, 218, 76);
-    padding: 0.5em 1.5em;
+    padding: 0.5em 1em;
     background-color: transparent;
     border-radius: .3em;
     position: relative;
@@ -63,17 +84,20 @@ ol {
     cursor: pointer;
     transition: .5s;
     font-weight: 400;
-    font-size: 17px;
+    font-size: clamp(0.5rem, 4vw, 1.1rem);
+    /* font-size: calc(0.5rem + 1vw); */
     border: 2px solid;
-    font-family: inherit;
     text-transform: uppercase;
     color: var(--color);
     z-index: 1;
-   }
-   
-   .searchBtn::before, .searchBtn::after,
-   .red-btn::before, .red-btn::after,
-   .deleteAllBtn::before, .deleteAllBtn::after {
+}
+
+.searchBtn::before,
+.searchBtn::after,
+.red-btn::before,
+.red-btn::after,
+.deleteAllBtn::before,
+.deleteAllBtn::after {
     content: '';
     display: block;
     width: 50px;
@@ -84,69 +108,95 @@ ol {
     z-index: -1;
     background-color: var(--color);
     transition: 1s ease;
-   }
-   
-   .searchBtn::before, .red-btn::before, .deleteAllBtn::before {
+}
+
+.searchBtn::before,
+.red-btn::before,
+.deleteAllBtn::before {
     top: -1em;
     left: -1em;
-   }
-   
-   .searchBtn::after, .red-btn::after, .deleteAllBtn::after {
+}
+
+.searchBtn::after,
+.red-btn::after,
+.deleteAllBtn::after {
     left: calc(100% + 1em);
     top: calc(100% + 1em);
-   }
-   
-   .searchBtn:hover::before, .searchBtn:hover::after,
-   .red-btn:hover::before, .red-btn:hover::after, 
-   .deleteAllBtn:hover::before, .deleteAllBtn:hover::after {
+}
+
+.searchBtn:hover::before,
+.searchBtn:hover::after,
+.red-btn:hover::before,
+.red-btn:hover::after,
+.deleteAllBtn:hover::before,
+.deleteAllBtn:hover::after {
     height: 410px;
     width: 410px;
-   }
-   
-   .searchBtn:hover, .red-btn:hover, .deleteAllBtn:hover {
+}
+
+.searchBtn:hover,
+.red-btn:hover,
+.deleteAllBtn:hover {
     color: rgb(10, 25, 30);
-   }
-   
-   .searchBtn:active, .red-btn:active, .deleteAllBtn:active {
+}
+
+.searchBtn:active,
+.red-btn:active,
+.deleteAllBtn:active {
     filter: brightness(.8);
-   }
-   .deleteAllBtn {
+}
+
+.searchBtn,
+.red-btn {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.deleteAllBtn {
     border: 2px solid rgb(236, 60, 60);
     color: rgb(236, 60, 60);
-   }
-   .deleteAllBtn::before, .deleteAllBtn::after {
+}
+
+.deleteAllBtn::before,
+.deleteAllBtn::after {
     background-color: rgb(236, 60, 60);
-   }
+}
 
 input {
     border: 2px solid rgb(30, 16, 110);
     border-radius: .3em;
     background-color: aliceblue;
-    padding: 0.8em 1em;    
-  }
-   .deleteBtn {
+    padding: 0.8em 1em;
+    font-size: clamp(0.5rem, 4vw, 1.2rem);
+    font-style: unset;
+}
+
+.deleteBtn {
     display: inline;
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
-    padding: 1em;
-    margin: 0 0.5rem ;
-    border: 0px solid transparent;
-    background-color: rgba(100,77,237,0.08);
-    border-radius: 1.25em;
+    padding: 0.5rem;
+    margin: 0.5rem 0.5rem;
+    border: 1px solid #252525;
+    background-color: rgba(100, 77, 237, 0.08);
+    border-radius: 10px;
     transition: all 0.2s linear;
     position: relative;
-   }
-   
-   .deleteBtn:hover {
+}
+
+.deleteBtn:hover {
     box-shadow: 3.4px 2.5px 4.9px rgba(0, 0, 0, 0.025),
-     8.6px 6.3px 12.4px rgba(0, 0, 0, 0.035),
-     17.5px 12.8px 25.3px rgba(0, 0, 0, 0.045),
-     36.1px 26.3px 52.2px rgba(0, 0, 0, 0.055),
-     99px 72px 143px rgba(0, 0, 0, 0.08);
-   }
-   
-   .deleteBtn .tooltiptext {
+        8.6px 6.3px 12.4px rgba(0, 0, 0, 0.035),
+        17.5px 12.8px 25.3px rgba(0, 0, 0, 0.045),
+        36.1px 26.3px 52.2px rgba(0, 0, 0, 0.055),
+        99px 72px 143px rgba(0, 0, 0, 0.08);
+}
+
+.deleteBtn .tooltiptext {
     visibility: hidden;
     width: 4em;
     background-color: rgba(0, 0, 0, 0.253);
@@ -158,9 +208,9 @@ input {
     z-index: 1;
     top: 25%;
     left: 110%;
-   }
-   
-   .deleteBtn .tooltiptext::after {
+}
+
+.deleteBtn .tooltiptext::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -169,8 +219,45 @@ input {
     border-width: 5px;
     border-style: solid;
     border-color: transparent rgba(0, 0, 0, 0.253) transparent transparent;
-   }
-   
-   .deleteBtn:hover .tooltiptext {
+}
+
+.deleteBtn:hover .tooltiptext {
     visibility: visible;
-   }
+}
+
+@media screen and (max-width:900px) {
+    .App {
+        width: 50%;
+    }
+
+    .searchBtn,
+    .red-btn,
+    .deleteAllBtn {
+        padding: 0.2em;
+    }
+
+    input {
+        padding: 0.5em;
+    }
+
+    .listItem {
+        gap: 100px;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .App {
+        width: 80%;
+        margin-top: 15%;
+    }
+
+    .listItem {
+        gap: 50px;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .App {
+        width: 90%;
+    }
+}
