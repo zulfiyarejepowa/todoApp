@@ -9,8 +9,6 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [SearchTasks, setSearchTasks] = useState([]);
   const [inputMod, setInputMod] = useState('tasks');
-  // const [FavTasks, setFavTasks] = useState([]);
-  // const [checked, setChecked] = useState(false);
   const inputRef = useRef();
 
 
@@ -75,14 +73,6 @@ function App() {
   const inputValue = inputMod === 'tasks' ? inputText : SearchText;
   const handleInput = inputMod === 'tasks' ? handleChange : handleSearchChange;
   const currentTasks = inputMod === 'tasks' ? tasks : SearchTasks;
-  // const handleFav = (taskIndex) => {
-  //   const filter = FavTasks.filter((task, favIndex) => {
-  //     if (favIndex !== taskIndex) {
-  //       setFavTasks([...FavTasks, task]);
-  //     }
-  //     console.log(FavTasks);
-  //   });
-  // };
 
   return (
     <div className="App">
@@ -125,10 +115,7 @@ function App() {
           <ol>
             {currentTasks.map((task) => (
               <li className="listItem" key={task.id}>
-                {/* <input type="checkbox" id="todo" checked={checked} onChange={() => setChecked(!checked)} />
-                <label htmlFor="todo"> */}
                   {task.text}
-                  {/* </label> */}
                 <button
                   onClick={() => handleDelete(task.id)}
                   className="deleteBtn"
@@ -138,9 +125,6 @@ function App() {
                   </svg>
                   <span class="tooltiptext">remove</span>
                 </button>
-                {/* <button onClick={() => handleFav(taskIndex)} className="favBtn">
-                  add to fav
-                </button> */}
               </li>
             ))}
           </ol>
